@@ -12,14 +12,26 @@ namespace HMS.Models.Entities
         [Key]
         public int Id { get; set; }
 
-        public string? Name { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; } = null!;
 
-        public string? Surname { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Surname { get; set; } = null!;
 
+        [Required]
+        [MaxLength(100)]
+        public string Email { get; set; } = null!;
+
+        [Required]
         public int IdentityNumber { get; set; }
 
-        public string? Email { get; set; }
+        [Required]
+        [MaxLength(15)]
+        public string MobileNumber { get; set; } = null!;
 
-        public string? MobileNumber { get; set; }
+        public int HotelId { get; set; }
+        public Hotel? Hotel { get; set; }
     }
 }

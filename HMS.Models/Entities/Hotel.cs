@@ -13,15 +13,29 @@ namespace HMS.Models.Entities
         [Key]
         public int Id { get; set; }
 
-        public string? Name { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; } = null!;
 
         [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5")]
         public int Rating { get; set; }
 
-        public string? Country { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Country { get; set; } = null!;
 
-        public string? City { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string City { get; set; } = null!;
 
-        public string? Adress { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Adress { get; set; } = null!;
+
+        public int ManagerId { get; set; }
+        public Manager? Manager { get; set; }
+
+        public ICollection<Room> Rooms { get; set; } = new List<Room>();
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

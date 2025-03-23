@@ -12,10 +12,18 @@ namespace HMS.Models.Entities
         [Key]
         public int Id { get; set; }
 
-        public string? Name { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; } = null!;
 
-        public bool IsAvailable { get; set; }
+        [Required]
+        public bool IsFree { get; set; }
 
-        public int Price { get; set; }
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
+        public decimal Price { get; set; }
+
+        public int HotelId { get; set; }
+        public Hotel Hotel { get; set; } = null!;
     }
 }

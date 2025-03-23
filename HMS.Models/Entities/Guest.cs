@@ -12,12 +12,21 @@ namespace HMS.Models.Entities
         [Key]
         public int Id { get; set; }
 
-        public string? Name { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; } = null!;
 
-        public string? Surname { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Surname { get; set; } = null!;
 
+        [Required]
         public int IdentityNumber { get; set; }
-        
-        public string? MobileNumber { get; set; }
+
+        [Required]
+        [MaxLength(15)]
+        public string MobileNumber { get; set; } = null!;
+
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

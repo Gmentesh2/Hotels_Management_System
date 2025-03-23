@@ -12,8 +12,16 @@ namespace HMS.Models.Entities
         [Key]
         public int Id { get; set; }
 
-        public DateTime CheckIn { get; set; }
+        [Required]
+        public DateTime CheckInDate { get; set; }
 
-        public DateTime CheckOut { get; set; }
+        [Required]
+        public DateTime CheckOutDate { get; set; }
+
+        public int GuestId { get; set; }
+        public Guest Guest { get; set; } = null!;
+
+        public int RoomId { get; set; }
+        public Room Room { get; set; } = null!;
     }
 }

@@ -11,19 +11,26 @@ namespace HMS.Repository.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-        }
-        public DbSet<Guest> Guests { get; set; }
-
         public DbSet<Hotel> Hotels { get; set; }
-
+        public DbSet<Room> Rooms { get; set; }
         public DbSet<Manager> Managers { get; set; }
-
+        public DbSet<Guest> Guests { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-        public DbSet<Room> Rooms { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+            modelBuilder.ConfigureHotels();
+            modelBuilder.ConfigureRooms();
+            modelBuilder.ConfigureManagers();
+            modelBuilder.ConfigureGuests();
+            modelBuilder.ConfigureReservations();
+        }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
     }
 }
