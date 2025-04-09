@@ -28,6 +28,15 @@ namespace HMS.Repository.Data
             modelBuilder.ConfigureReservations();
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("SQLServerConnection",
+                    sqlOptions => sqlOptions.MigrationsAssembly("HMS.Repository"));
+            }
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

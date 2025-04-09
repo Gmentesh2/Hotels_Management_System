@@ -9,22 +9,14 @@ namespace HMS.Models.Entities
 {
     public class Guest
     {
-        [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(50)]
         public string Name { get; set; } = null!;
-
-        [Required]
-        [MaxLength(50)]
+      
         public string Surname { get; set; } = null!;
 
-        [Required]
         public int IdentityNumber { get; set; }
 
-        [Required]
-        [MaxLength(15)]
         public string MobileNumber { get; set; } = null!;
 
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
