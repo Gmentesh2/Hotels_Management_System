@@ -11,12 +11,10 @@ namespace HMS.Repository.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Hotel> Hotels { get; set; }
-        public DbSet<Room> Rooms { get; set; }
-        public DbSet<Manager> Managers { get; set; }
-        public DbSet<Guest> Guests { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
-
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -36,10 +34,10 @@ namespace HMS.Repository.Data
                     sqlOptions => sqlOptions.MigrationsAssembly("HMS.Repository"));
             }
         }
-
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+        public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }
