@@ -15,15 +15,15 @@ namespace HMS.Repository.Data
             : base(options)
         {
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
 
-            modelBuilder.ConfigureHotels();
-            modelBuilder.ConfigureRooms();
-            modelBuilder.ConfigureManagers();
-            modelBuilder.ConfigureGuests();
-            modelBuilder.ConfigureReservations();
+            builder.ConfigureHotels();
+            builder.ConfigureRooms();
+            builder.ConfigureManagers();
+            builder.ConfigureGuests();
+            builder.ConfigureReservations();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
